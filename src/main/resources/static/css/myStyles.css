@@ -1,0 +1,67 @@
+/* General */
+html, body {
+    height: 100%; /* Asegura que el body ocupe toda la altura */
+    margin: 0; /* Eliminar márgenes por defecto */
+}
+
+body {
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Apila elementos en columna */
+    background-color: white; /* Color de fondo blanco */
+    color: black; /* Color de texto negro */
+}
+
+/* Contenedor principal que ocupa el espacio restante */
+.container {
+    flex: 1; /* Ocupa el espacio restante entre el header y el footer */
+}
+
+/* Header */
+header {
+    background-color: black; /* Fondo negro para el header */
+}
+
+/* Estilos del logo */
+.logo {
+    width: 80px; /* Ajustar el tamaño del logo */
+    height: auto; /* Mantiene la proporción del logo */
+}
+
+/* Estilos para enlaces de navegación */
+.nav-link {
+    color: white; /* Color de texto blanco */
+    transition: color 0.3s; /* Transición suave para hover */
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: red; /* Color de texto rojo al pasar el ratón */
+}
+
+/* Footer */
+footer {
+    background-color: black; /* Fondo negro para el footer */
+}
+
+/* Estilos del logo en el footer */
+.footer-logo {
+    width: 80px; /* Ajustar el tamaño del logo en el footer */
+    height: auto; /* Mantiene la proporción del logo */
+}
+
+/* Estilo para los enlaces del footer */
+.footer a {
+    color: white !important; /* Asegura que los enlaces sean visibles */
+}
+
+/* Estilo para el texto de redes sociales */
+.text-white {
+    margin-bottom: 0; /* Evitar márgenes en el párrafo */
+}
+
+/* Estilo para los iconos sociales */
+.social-icon {
+    width: 25px; /* Ajusta el tamaño de los iconos */
+    height: auto; /* Mantiene la proporción de los iconos */
+    margin-right: 10px; /* Espaciado entre iconos */
+}
