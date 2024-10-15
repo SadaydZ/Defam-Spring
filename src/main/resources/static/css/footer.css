@@ -1,0 +1,58 @@
+footer {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.info {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+.w {
+  width: 100%;
+}
+.brand-title {
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.brand-title .auto {
+  color: white;
+}
+
+.brand-title .film {
+  color: red;
+}
+
+.social-media {
+  margin-top: 10px;
+}
+.social-media img {
+  justify-content: center;
+}
+
+.social-media .icon {
+  width: 96px;
+  height: 96px;
+  margin-left: 10px;
+}
+
+.complaints {
+  margin: 0 auto;
+}
+
+.complaints .icon {
+  width: 120px;
+  height: 120px;
+  margin: 20px auto;
+}
+
+.copyright {
+  margin-top: 10px;
+}
+.icon:hover {
+  transform: scale(1.1);
+}

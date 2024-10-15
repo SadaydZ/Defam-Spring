@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #141414;
+  color: #ffffff;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  width: auto;
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  /*  */
+}
+
+.movie-card img {
+  width: 200px;
+  height: auto;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.movie-card img:hover {
+  cursor: pointer;
+}
+.movie-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.movie-details {
+  margin-top: 1rem;
+  text-align: center;
+}
+.movie-details h3 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.movie-details p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #bbbbbb;
+}
+h1,
+h2 {
+  padding-left: 2rem;
+}
+
+table {
+  width: 90%;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  background-color: #1f1f1f;
+}
+
+th,
+td {
+  padding: 0.5rem;
+  border: 1px solid #333;
+  text-align: left;
+}
+
+th {
+  background-color: #2f2f2f;
+}
+
+img {
+  display: block;
+  max-width: 150px;
+  height: auto;
+}
