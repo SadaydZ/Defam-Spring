@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AutoFilm Header Fragment</title>
+    <title>DefamFilm Header Fragment</title>
 
     <link rel="stylesheet" th:href="@{/css/header.css}" />
   </head>
@@ -15,10 +15,10 @@
             <li>
               <a href="#" th:href="@{/}" class="autofilm-active">Inicio</a>
             </li>
-            <li><a href="#" th:href="@{/estrenos}">Pago</a></li>
-            <li><a href="#" th:href="@{/catalogo}">Comida</a></li>
-            <li><a href="#" th:href="@{/directores}">Películas</a></li>
-            <li><a href="#" th:href="@{/directores}">Reserva</a></li>
+            <li><a href="#" th:href="@{/pago}">Pago</a></li>
+            <li><a href="#" th:href="@{/comida}">Comida</a></li>
+            <li><a href="#" th:href="@{/peliculas/listar}">Películas</a></li>
+            <li><a href="#" th:href="@{/reserva}">Reserva</a></li>
           </ul>
         </nav>
         <div class="autofilm-logo w">
@@ -27,8 +27,8 @@
           </span>
         </div>
         <div class="autofilm-auth-links w">
-          <a href="#" th:href="@{/iniciar-sesion}">Iniciar sesión</a>
-          <a href="#" th:href="@{/registrarse}">Registrarse</a>
+          <a href="#" th:href="@{/login}">Iniciar sesión</a>
+          <a href="#" th:href="@{/register}">Registrarse</a>
         </div>
       </div>
     </header>
