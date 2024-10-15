@@ -12,8 +12,8 @@ public class UserRepository {
 
     public UserRepository() {
         // Usuarios hardcodeados
-        users.add(new User("User1", "user1@gmail.com", "password1"));
-        users.add(new User("User2", "user2@gmail.com", "password2"));
+        users.add(new User("Usuario1", "user1@gmail.com", "password1"));
+        users.add(new User("Usuario2", "user2@gmail.com", "password2"));
         users.add(new User("Anderson", "anderson@gmail.com", "123456"));
     }
 
