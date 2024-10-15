@@ -1,29 +1,23 @@
-<footer>
-  <div class="info">
-    <div class="w">
-      <span class="brand-title">
-        <span class="auto">Auto</span><span class="film">film</span>
-      </span>
+<footer class="bg-black py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo a la izquierda -->
+        <div>
+            <img th:src="@{/images/cinema.png}" alt="Defam Logo" class="footer-logo"> <!-- Logo -->
+        </div>
+        <!-- Redes sociales a la derecha -->
+        <div class="text-white">
+            <p class="m-0">Síguenos</p>
+            <div class="d-flex">
+                <a href="#" class="text-white me-2">
+                    <img th:src="@{/images/whatsapp.png}" alt="WhatsApp" class="social-icon">
+                </a>
+                <a href="#" class="text-white me-2">
+                    <img th:src="@{/images/facebook.png}" alt="Facebook" class="social-icon">
+                </a>
+                <a href="#" class="text-white">
+                    <img th:src="@{/images/instagram.png}" alt="Instagram" class="social-icon">
+                </a>
+            </div>
+        </div>
     </div>
-
-    <div class="complaints w">
-      <span>Libro de reclamaciones</span>
-      <img src="/images/libro.jpg" alt="Libro de reclamaciones" class="icon" />
-    </div>
-    <div class="social-media w">
-      <span>Síguenos</span>
-      <a href="https://wa.me/"
-        ><img src="/images/whatsapp.svg" alt="WhatsApp" class="icon"
-      /></a>
-      <a href="https://www.facebook.com/"
-        ><img src="/images/facebook.svg" alt="Facebook" class="icon"
-      /></a>
-      <a href="https://www.instagram.com/"
-        ><img src="/images/instagram.svg" alt="Instagram" class="icon"
-      /></a>
-    </div>
-  </div>
-  <div class="copyright">
-    <span>© 2024 Autocine. Todos los derechos reservados.</span>
-  </div>
 </footer>

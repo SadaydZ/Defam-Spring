@@ -1,83 +1,61 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AutoFilm - Streaming de Películas</title>
-    <link rel="stylesheet" th:href="@{/css/peliculas.css}" />
-    <link rel="stylesheet" th:href="@{/css/header.css}" />
-    <link rel="stylesheet" th:href="@{/css/footer.css}" />
-  </head>
-  <body>
-    <header th:replace="fragments/header :: header"></header>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Películas - Defam</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}">
+    <style>
+        .movie-poster {
+            width: 150px;
+            height: 225px;
+        }
+        .search-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div th:replace="fragments/header :: header"></div>
 
-    <h2>Recomendaciones</h2>
-    <section class="movie-grid">
-      <div class="movie-card" th:each="pelicula : ${peliculas}">
-        <div class="movie-image">
-          <img th:src="${pelicula.imagenUrl}" th:alt="${pelicula.titulo}" />
+    <!-- Contenido principal -->
+    <div class="container mt-5">
+        <!-- Recomendaciones -->
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Recomendaciones</h1>
+            <!-- Buscador de películas -->
+            <form class="search-container" action="#" method="GET">
+                <input type="text" class="form-control" placeholder="Buscar película...">
+                <button class="btn btn-danger ms-2" type="submit">Buscar</button>
+            </form>
         </div>
-        <div class="movie-details">
-          <h3 th:text="${pelicula.titulo}">Título</h3>
-          <p th:text="${pelicula.resumen}">Resumen</p>
-          <p th:text="${#dates.format(pelicula.fechaEstreno, 'dd-MM-yyyy')}">
-            Fecha de Estreno
-          </p>
-          <!-- <a
-            th:href="@{/reservar/{id}(id=${pelicula.id})}"
-            class="reserve-button"
-            >Reservar</a
-          > -->
+
+        <!-- Lista de películas recomendadas -->
+        <div class="row mt-4">
+            <div class="col-2 mb-4" th:each="pelicula : ${recomendaciones}">
+                <img th:src="@{/images/foto.png}" alt="Póster película" class="movie-poster img-fluid">
+                <p class="text-center" th:text="${pelicula.nombre}">Nombre Película</p>
+            </div>
         </div>
-      </div>
-    </section>
-    <h2>Próximos estrenos</h2>
-    <section class="movie-grid">
-      <div class="movie-card" th:each="pelicula : ${estrenos}">
-        <img th:src="${pelicula.imagenUrl}" th:alt="${pelicula.titulo}" />
-        <div class="movie-details">
-          <h3 th:text="${pelicula.titulo}">Título</h3>
-          <p th:text="${pelicula.resumen}">Resumen</p>
-          <p th:text="${#dates.format(pelicula.fechaEstreno, 'dd-MM-yyyy')}">
-            Fecha de Estreno
-          </p>
+
+        <!-- Próximos Estrenos -->
+        <h1>Próximos Estrenos</h1>
+        <div class="row mt-4">
+            <div class="col-2 mb-4" th:each="pelicula : ${proximosEstrenos}">
+                <img th:src="@{/images/foto.png}" alt="Póster película" class="movie-poster img-fluid">
+                <p class="text-center" th:text="${pelicula.nombre}">Nombre Película</p>
+            </div>
         </div>
-      </div>
-    </section>
-    <h1>Lista de Películas</h1>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Título</th>
-          <th>Duración</th>
-          <th>Género</th>
-          <th>Año</th>
-          <th>Resumen</th>
-          <th>Fecha de Estreno</th>
-          <th>Imagen</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr th:each="pelicula : ${peliculas}">
-          <td th:text="${pelicula.titulo}">Título</td>
-          <td th:text="${pelicula.duracion}">Duración</td>
-          <td th:text="${pelicula.genero}">Género</td>
-          <td th:text="${pelicula.anio}">Año</td>
-          <td th:text="${pelicula.resumen}">Resumen</td>
-          <td th:text="${#dates.format(pelicula.fechaEstreno, 'dd-MM-yyyy')}">
-            Fecha de Estreno
-          </td>
-          <td>
-            <img
-              th:src="${pelicula.imagenUrl}"
-              alt="Imagen de ${pelicula.titulo}"
-              width="100"
-              height="150"
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <footer th:replace="fragments/footer :: footer"></footer>
-  </body>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="fragments/footer :: footer"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
