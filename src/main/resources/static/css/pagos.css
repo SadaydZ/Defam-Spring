@@ -1,0 +1,58 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000; /* Fondo oscuro */
+    color: #f2f2f2; /* Color de texto claro */
+}
+
+header, footer {
+    background-color: #000;
+    color: #f2f2f2;
+    padding: 15px;
+    text-align: center;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #FFD700; /* Color dorado para el título */
+    margin-bottom: 20px;
+}
+
+.form-control {
+    border: 1px solid #FFD700; /* Borde dorado para los campos de entrada */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+    color: #f2f2f2; /* Color de texto claro */
+}
+
+.form-control::placeholder {
+    color: #f2f2f2; /* Color de texto del placeholder */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Rojo oscuro */
+    border-color: #dc3545; /* Borde rojo oscuro */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.5em;
+    color: yellow; /* Color del texto de carga */
+    margin-top: 20px;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .form-control {
+        font-size: 14px; /* Tamaño de fuente más pequeño en móviles */
+    }
+}
