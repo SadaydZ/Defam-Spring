@@ -5,41 +5,63 @@ import com.autocine.defam.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @Controller
 public class AuthController {
+
     @Autowired
     private UserService userService;
 
-    // Página de inicio de sesión
     @GetMapping("/login")
     public String showLoginForm() {
         return "login";
     }
 
-    // Formulario de inicio de sesión
-    @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password, Model model) {
-        User user = userService.login(email, password);
-        if (user != null) {
-            return "redirect:/"; // Login exitoso
-        }
-        model.addAttribute("error", "Invalid email or password");
-        return "login"; // Vuelve a mostrar la página de login con error
-    }
-
-    // Página de registro
     @GetMapping("/register")
-    public String showRegisterForm() {
+    public String showRegisterForm(Model model) {
+        model.addAttribute("user", new User());
         return "register";
     }
 
-    // Formulario de registro
     @PostMapping("/register")
-    public String register(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
-        User user = new User(name, email, password);
+    public String registerUser(@Valid User user, BindingResult bindingResult, String confirm_password, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
+
+        if (!user.getPassword().equals(confirm_password)) {
+            model.addAttribute("error", "Las contraseñas no coinciden");
+            return "register";
+        }
+
+        if (userService.findByEmail(user.getEmail()).isPresent()) {
+            model.addAttribute("error", "El correo electrónico ya está registrado");
+            return "register";
+        }
+
         userService.register(user);
-        return "redirect:/login"; // Nos redirige al login después del registro
+        return "redirect:/login";
+    }
+
+    @PostMapping("/login")
+    public String loginUser(String email, String password, HttpSession session) {
+        User user = userService.authenticate(email, password);
+        if (user != null) {
+            session.setAttribute("user", user);
+            return "redirect:/";
+        } else {
+            return "redirect:/login?error=true";
+        }
+    }
+
+    @GetMapping("/logout")
+    public String logoutUser(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
     }
 }

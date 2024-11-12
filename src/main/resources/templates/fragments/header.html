@@ -12,9 +12,7 @@
       <div class="autofilm-header-content">
         <nav class="autofilm-nav w">
           <ul>
-            <li>
-              <a href="#" th:href="@{/}" class="autofilm-active">Inicio</a>
-            </li>
+            <li><a href="#" th:href="@{/}" class="autofilm-active">Inicio</a></li>
             <li><a href="#" th:href="@{/pago}">Pago</a></li>
             <li><a href="#" th:href="@{/comida}">Comida</a></li>
             <li><a href="#" th:href="@{/peliculas/listar}">Películas</a></li>
@@ -26,10 +24,19 @@
             <span class="auto">Auto</span><span class="film">film</span>
           </span>
         </div>
-        <div class="autofilm-auth-links w">
-          <a href="#" th:href="@{/login}">Iniciar sesión</a>
-          <a href="#" th:href="@{/register}">Registrarse</a>
-        </div>
+        
+		<div class="autofilm-auth-links w">
+		  <!-- Mostrar el nombre del usuario y el enlace de cerrar sesión si está autenticado -->
+		  <div th:if="${session.user != null}">
+		    <span class="user-button" th:text="${session.user.name}">Nombre Usuario</span>
+		    <a href="#" th:href="@{/logout}">Cerrar sesión</a>
+		  </div>
+		  <!-- Mostrar los enlaces de Iniciar sesión y Registrarse si el usuario no está autenticado -->
+		  <div th:if="${session.user == null}">
+		    <a href="#" th:href="@{/login}">Iniciar sesión</a>
+		    <a href="#" th:href="@{/register}">Registrarse</a>
+		  </div>
+		</div>
       </div>
     </header>
   </body>

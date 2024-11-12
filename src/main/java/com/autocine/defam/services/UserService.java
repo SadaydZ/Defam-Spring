@@ -5,20 +5,27 @@ import com.autocine.defam.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository userRepository;
 
-    public User login(String email, String password) {
-        User user = userRepository.findByEmail(email);
-        if (user != null && user.getPassword().equals(password)) {
-            return user; // Login exitoso
-        }
-        return null; // Credenciales incorrectas
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public void register(User user) {
-        userRepository.save(user); // Registro de un nuevo usuario
+        userRepository.save(user);
+    }
+
+    public User authenticate(String email, String password) {
+        Optional<User> user = findByEmail(email);
+        if (user.isPresent() && user.get().getPassword().equals(password)) {
+            return user.get();
+        }
+        return null;
     }
 }
