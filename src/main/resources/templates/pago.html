@@ -9,18 +9,82 @@
     <link rel="stylesheet" th:href="@{/css/myStyles.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}" />
     <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000; /* Fondo oscuro */
+            color: #f2f2f2; /* Color de texto claro */
+        }
+
+        header, footer {
+            background-color: #000;
+            color: #f2f2f2;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+            border-radius: 10px; /* Bordes redondeados */
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #FFD700; /* Color dorado para el título */
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border: 1px solid #FFD700; /* Borde dorado para los campos de entrada */
+            background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+            color: #f2f2f2; /* Color de texto claro */
+        }
+
+        .form-control::placeholder {
+            color: #f2f2f2; /* Color de texto del placeholder */
+        }
+
+        .btn-danger {
+            background-color: #dc3545; /* Rojo oscuro */
+            border-color: #dc3545; /* Borde rojo oscuro */
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 1.5em;
+            color: yellow; /* Color del texto de carga */
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <div th:replace="fragments/header :: header"></div>
 
     <!-- Contenido principal -->
-    <div class="container mt-5">
+    <div class="container">
         <h1>Formulario de Pago</h1>
-    <form action="#" th:action="@{/pago}" method="post">
-        <input type="text" placeholder="Número de tarjeta" required />
-        <button type="submit">Pagar</button>
-    </form>
+        <form id="paymentForm">
+            <div class="mb-3">
+                <label for="cardNumber" class="form-label">Número de tarjeta</label>
+                <input type="text" id="cardNumber" placeholder="Número de tarjeta" required class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label for="expiryDate" class="form-label">Fecha de expiración (MM/AA)</label>
+                <input type="text" id="expiryDate" placeholder="MM/AA" required class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label for="cvv" class="form-label">CVV</label>
+                <input type="text" id="cvv" placeholder="CVV" required class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-danger">Pagar</button>
+        </form>
     </div>
 
     <!-- Footer -->
@@ -28,11 +92,39 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const paymentForm = document.getElementById('paymentForm');
+
+        function validateCardNumber(cardNumber) {
+            const regex = /^[0-9]{16}$/; // Asegúrate de que tenga 16 dígitos
+            return regex.test(cardNumber);
+        }
+
+        paymentForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Detener el envío del formulario
+
+            const cardNumberInput = document.getElementById('cardNumber');
+            const expiryDateInput = document.getElementById('expiryDate');
+            const cvvInput = document.getElementById('cvv');
+
+            if (!validateCardNumber(cardNumberInput.value)) {
+                alert("Número de tarjeta inválido. Debe tener 16 dígitos.");
+                return; // Salir de la función si el número es inválido
+            }
+
+            // Mostrar indicador de carga
+            const loadingMessage = document.createElement('div');
+            loadingMessage.textContent = "Procesando el pago...";
+            loadingMessage.className = "loading";
+            document.body.appendChild(loadingMessage);
+
+            // Simula un retraso de procesamiento
+            setTimeout(() => {
+                alert("Pago realizado con éxito!");
+                window.location.href = "/confirmacion"; // Cambia a la URL deseada
+            }, 2000); // 2 segundos de espera
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
+A

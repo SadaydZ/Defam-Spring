@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse</title>
+    <title>Registro</title>
     <link rel="stylesheet" href="/css/login-register-styles.css">
 </head>
 <body>
     <div class="container-login">
-        <!-- Logo y Bienvenida -->
         <div class="login-left">
             <img src="/images/cinema.png" alt="Logo">
             <h1>¡Únete a nosotros!</h1>
             <p>Crea una cuenta y disfruta de nuestros servicios.</p>
         </div>
-
-        <!-- Formulario de Registro -->
         <div class="login-right">
             <h2>Registro</h2>
-            <form action="/login" method="post">
-                <input type="text" name="name" placeholder="Nombre" required>
-                <input type="email" name="email" placeholder="Correo" required>
-                <input type="password" name="password" placeholder="Contraseña" required>
+            
+            <form action="/register" method="post" th:object="${user}">
+                <input type="text" th:field="*{name}" placeholder="Nombre" required>
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
+
+                <input type="email" th:field="*{email}" placeholder="Correo" required>
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></div>
+
+                <input type="password" th:field="*{password}" placeholder="Contraseña" required>
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></div>
+
                 <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" required>
+                <div th:if="${error}" th:text="${error}" class="error"></div>
+
                 <button type="submit">Registrarse</button>
                 <a href="/login">¿Ya tienes una cuenta? Iniciar sesión</a>
             </form>

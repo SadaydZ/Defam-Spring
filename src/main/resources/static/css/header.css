@@ -60,3 +60,23 @@
   width: 100%;
   justify-content: center;
 }
+
+.user-button {
+    background-color: #fff;              /* Color de fondo del botón */
+    color: #000;                         /* Color del texto */
+    border: none;
+    border-radius: 25px;                 /* Bordes redondeados */
+    padding: 8px 16px;                   /* Espaciado interior */
+    font-size: 16px;                     /* Tamaño de fuente */
+    font-weight: bold;                   /* Texto en negrita */
+    text-align: center;                  /* Centrar el texto */
+    cursor: default;                     /* Cursor sin acción al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transición suave */
+}
+
+.user-button:hover {
+    background-color: #f0f0f0;           /* Cambia el color de fondo al pasar el ratón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa al pasar el ratón */
+}
+

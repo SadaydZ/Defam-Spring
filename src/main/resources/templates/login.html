@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="/css/login-register-styles.css">
+	<link rel="stylesheet" href="/css/login-register-styles.css">
 </head>
 <body>
-    <div class="container-login">
-        <!-- Saludo y logo -->
-        <div class="login-left">
-            <img src="/images/cinema.png" alt="Logo">
-            <h1>Hola, bienvenido de vuelta!</h1>
-            <p>Por favor inicie sesión para continuar.</p>
-        </div>
-
-        <!-- Formulario de inicio de sesión -->
-        <div class="login-right">
-            <h2>Inicio de Sesión</h2>
-            <form action="/login" method="post"> <!-- Cambiado a /login -->
-                <input type="email" name="email" placeholder="Correo" required>
-                <input type="password" name="password" placeholder="Contraseña" required>
-                <button type="submit">Iniciar Sesión</button>
-                <a href="/register">¿Aún no tienes una cuenta? Registrarse</a>
-            </form>
-        </div>
+	<div class="container-login">
+	<!-- Logo -->
+	<div class="login-left">
+		<img src="/images/cinema.png" alt="Logo">
+		<h1>Hola, bienvenido de vuelta!</h1>
+		<p>Por favor inicie sesión para continuar.</p>
+	</div>
+	<!-- Formulario de inicio de sesión -->
+	<div class="login-right">
+		<h2>Inicio de Sesión</h2>
+    	<form action="/login" method="post">
+        	<input type="email" name="email" placeholder="Correo" required>
+        	<input type="password" name="password" placeholder="Contraseña" required>
+        	<button type="submit">Iniciar Sesión</button>
+        	<a href="/register">¿Aún no tienes una cuenta? Registrarse</a>
+    	</form>
+    <div th:if="${error}">
+        <p th:text="${error}">Email o contraseña incorrectos</p>
     </div>
 </body>
 </html>
