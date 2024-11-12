@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cargando...</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+    <style>
+      body {
+        background-color: black; /* Fondo negro */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .loader img {
+        width: 150px; /* Ajusta el tamaño del logo */
+        animation: spin 2s linear infinite; /* Animación de giro */
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
     <script>
-        // Redirigir después de 3 segundos
-        setTimeout(function() {
-            window.location.href = 'peliculas'; // URL de redirección
-        }, 3000);
+      // Redirigir después de 3 segundos
+      setTimeout(function () {
+        window.location.href = "peliculas"; // Cambia esto a la URL correcta si es necesario
+      }, 3000);
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="loader">
-        <img th:src="@{/images/cinema.png}" alt="Logo">
-        <h3 style="color: white;">Cargando...</h3>
+      <img th:src="@{/images/cinema.png}" alt="Logo" />
+      <h3 style="color: white">Cargando...</h3>
     </div>
-</body>
+  </body>
 </html>

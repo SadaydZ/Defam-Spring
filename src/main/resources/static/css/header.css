@@ -42,7 +42,7 @@
   font-size: 14px;
 }
 .autofilm-active {
-  color: #ff0000 !important;
+  color: blue !important;
 }
 .brand-title {
   font-size: 70px;
@@ -54,7 +54,7 @@
 }
 
 .brand-title .film {
-  color: red;
+  color: blue;
 }
 .w {
   width: 100%;
