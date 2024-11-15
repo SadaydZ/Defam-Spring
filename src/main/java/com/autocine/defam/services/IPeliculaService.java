@@ -13,5 +13,4 @@ public interface IPeliculaService {
 
     void eliminarPelicula(String titulo);
 
-    List<Pelicula> obtenerEstrenos();
 }

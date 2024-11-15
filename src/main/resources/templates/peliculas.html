@@ -9,8 +9,10 @@
     <link rel="stylesheet" th:href="@{/css/footer.css}" />
   </head>
   <body>
+    <!-- Header -->
     <header th:replace="fragments/header :: header"></header>
 
+    <!-- Sección de Películas -->
     <h2>Recomendaciones</h2>
     <section class="movie-grid">
       <div class="movie-card" th:each="pelicula : ${peliculas}">
@@ -26,24 +28,12 @@
           <!-- <a
             th:href="@{/reservar/{id}(id=${pelicula.id})}"
             class="reserve-button"
-            >Reservar</a
-          > -->
+          >Reservar</a> -->
         </div>
       </div>
     </section>
-    <h2>Próximos estrenos</h2>
-    <section class="movie-grid">
-      <div class="movie-card" th:each="pelicula : ${estrenos}">
-        <img th:src="${pelicula.imagenUrl}" th:alt="${pelicula.titulo}" />
-        <div class="movie-details">
-          <h3 th:text="${pelicula.titulo}">Título</h3>
-          <p th:text="${pelicula.resumen}">Resumen</p>
-          <p th:text="${#dates.format(pelicula.fechaEstreno, 'dd-MM-yyyy')}">
-            Fecha de Estreno
-          </p>
-        </div>
-      </div>
-    </section>
+
+    <!-- Lista de Películas en Tabla -->
     <h1>Lista de Películas</h1>
     <table border="1">
       <thead>
@@ -78,6 +68,8 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- Footer -->
     <footer th:replace="fragments/footer :: footer"></footer>
   </body>
 </html>
