@@ -4,34 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" href="/css/login-register-styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div class="container-login">
-        <div class="login-left">
-            <img src="/images/cinema.png" alt="Logo">
-            <h1>¡Únete a nosotros!</h1>
-            <p>Crea una cuenta y disfruta de nuestros servicios.</p>
-        </div>
-        <div class="login-right">
-            <h2>Registro</h2>
-            
-            <form action="/register" method="post" th:object="${user}">
-                <input type="text" th:field="*{name}" placeholder="Nombre" required>
-                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
+    <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+        <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+            <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+                <div>
+                    <img src="/images/cinema.png" class="w-32 mx-auto" />
+                </div>
+                <div class="mt-12 flex flex-col items-center">
+                    <h1 class="text-2xl xl:text-3xl font-extrabold">
+                        Formulario de Registro
+                    </h1>
+                    <div class="w-full flex-1 mt-8">
+                        <div class="flex flex-col items-center">
+                            <button
+                                class="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+                                <span class="ml-4">
+                                    <a href="/login">Iniciar Sesión</a>
+                                </span>
+                            </button>
+                        </div>
 
-                <input type="email" th:field="*{email}" placeholder="Correo" required>
-                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></div>
+                        <div class="my-12 border-b text-center">
+                            <div
+                                class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                                Crea una cuenta y disfruta de nuestros servicios
+                            </div>
+                        </div>
 
-                <input type="password" th:field="*{password}" placeholder="Contraseña" required>
-                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></div>
-
-                <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" required>
-                <div th:if="${error}" th:text="${error}" class="error"></div>
-
-                <button type="submit">Registrarse</button>
-                <a href="/login">¿Ya tienes una cuenta? Iniciar sesión</a>
-            </form>
+                        <form action="/register" method="post" th:object="${user}" class="mx-auto max-w-xs">
+                            <input
+                                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                type="text" th:field="*{name}" placeholder="Nombre" required />
+                            <input
+                                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                type="email" th:field="*{email}" placeholder="Correo electrónico" required />
+                            <input
+                                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                type="password" th:field="*{password}" placeholder="Contraseña" required />
+                            <input
+                                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                type="password" name="confirm_password" placeholder="Confirmar Contraseña" required />
+                            <button
+                                class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                    <circle cx="8.5" cy="7" r="4" />
+                                    <path d="M20 8v6M23 11h-6" />
+                                </svg>
+                                <span class="ml-3">
+                                    Registrarse
+                                </span>
+                            </button>
+                            <p class="mt-6 text-xs text-gray-600 text-center">
+                                Estoy de acuerdo con los
+                                <a href="#" class="border-b border-gray-500 border-dotted">
+                                    Términos de Servicio
+                                </a>
+                                y su
+                                <a href="#" class="border-b border-gray-500 border-dotted">
+                                    Política de Privacidad
+                                </a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 bg-indigo-100 text-center hidden lg:flex">
+                <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
+                    style="background-image: url('https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg');">
+                </div>
+            </div>
         </div>
     </div>
 </body>
